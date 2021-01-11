@@ -1,5 +1,6 @@
 import React from 'react'
 import Accordion from './components/Accordion'
+import Search from './components/Search'
 
 // An internal array of objects that simulates external data
 const items = [
@@ -17,12 +18,23 @@ const items = [
   }
 ]
 
+// temp function to not show prev developed components
+// until routing is wired up.
+function ShowItems(props) {
+  const showComponents = props.showComponents
+  if (showComponents) {
+    return <Accordion items={items} />
+  }
+  return <div></div>
+}
+
 class App extends React.Component {
 
   render() {
     return (
       <div >
-        <Accordion items={items} />
+        <Search />
+        <ShowItems showComponents={false} />
       </div>
     )
   }

@@ -1,3 +1,19 @@
+# Project purpose
+
+This project is designed to showcase basic knowledge of REACT programming.
+The app demonstrates the use of the lifecyle hooks in 'function' components.
+It is written using very basic semantic-ui formatting - nothing pretty just functional.
+The code is heavily commented - more than may be needed in a production environment.
+
+The 'widgets' showcase the following:
+    1) Accordion - useState
+    2) Search - wikipedia api connection
+              - useState, useEffect
+              - delayed API request
+    3) Dropdown box - useState, useEffect,
+    4) Translate -
+    5) Basic Routing -
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
