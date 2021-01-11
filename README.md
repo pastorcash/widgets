@@ -10,7 +10,7 @@ The 'widgets' showcase the following:
     2) Search: wikipedia api connection
               - useState, useEffect
               - delayed API request
-    3) Dropdown box: useState, useEffect,
+    3) Dropdown box: useState, useEffect, useRef - reusable component
     4) Translate:
     5) Basic Routing:
 
