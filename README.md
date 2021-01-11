@@ -1,4 +1,4 @@
-# Project purpose
+# REACT Widget - Knowledge showcase
 
 This project is designed to showcase basic knowledge of REACT programming.
 The app demonstrates the use of the lifecyle hooks in 'function' components.
@@ -14,7 +14,7 @@ The 'widgets' showcase the following:
     4) Translate -
     5) Basic Routing -
 
-# Getting Started with Create React App
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
