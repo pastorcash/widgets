@@ -3,16 +3,31 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 
 const Search = () => {
-  // Initialze a piece of state
+  // Initialze state data
   const [term, setTerm] = useState('programming')
+  const [debouncedTerm, setDeboundedTerm] = useState(term)
   const [results, setResults] = useState([])
 
-  //* Use lifecycle hook 'useEffect'
+  //* Lifecycle hook 'useEffect'
+  // Using the 'debouncedTerm' allows us to track the users entry and delay API access by 1 sec
+  // after final keystroke.
+  // This will prevent unnecessary multiple/double api calls.
+  useEffect(() => {
+    const timerId= setTimeout(() => {
+      setDeboundedTerm(term)
+    }, 1000)
+
+    // The 'return' is the "CLEANUP" portion of this lifecycle hook where we cancel
+    //   the timer and then reinitialize it through the hook's normal processing.
+    return () => {
+      clearTimeout(timerId)
+    }
+  }, [term])
+
   useEffect(() => {
     // Declare a helper function
     // Async/Promise is not allowed in the param brackets of useEffect
     // React.org recommends using async over promise although both will work
-
     const search = async () => {
       const { data } = await axios.get('https://en.wikipedia.org/w/api.php', {
         params: {
@@ -20,32 +35,13 @@ const Search = () => {
           list: 'search',
           origin: '*',
           format: 'json',
-          srsearch: term
+          srsearch: debouncedTerm
         }
       })
-
       setResults(data.query.search)
-
     }
-
-    // If rendered for the first time (using a default search term)
-    // ... and a result has not been fetched ... (skips timeout) ...
-    // (Wikipedi api doesn't like a blank search term.)
-    if (term && !results.length) {
-      search()
-    }
-    // Call the helper function after a 500ms delay of last change of input
-    const timeoutId = setTimeout(() => {
-      if (term) { search() }
-    }, 500)
-
-    // The 'return' is the "CLEANUP" portion of this lifecycle hook where we cancel
-    //   the time and then reinitialize it through the hook's normal processing.
-    // Another solution for canceling the timer would be to initialize another
-    //   piece of state and then track the change
-    return () => {clearTimeout(timeoutId)}
-
-  }, [term])
+    search()
+  }, [debouncedTerm])
 
   //* Map the search results into JSX
   const renderedResults = results.map((result) => {
