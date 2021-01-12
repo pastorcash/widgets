@@ -11,8 +11,16 @@ The 'widgets' showcase the following:
               - useState, useEffect
               - delayed API request
     3) Dropdown box: useState, useEffect, useRef - reusable component
-    4) Translate:
+    4) Translate: useState, useEffect - nested components - delayed API request - Google Translate API
     5) Basic Routing:
+
+## Translate API Note
+This widget will only work if the app is running on:
+
+localhost:3000
+
+The API is Google Translate API
+The api key is valid only for the local host url
 
 ## Getting Started with Create React App
 
