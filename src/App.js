@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Accordion from './components/Accordion'
 import Search from './components/Search'
 import Dropdown from './components/Dropdown'
+import Translate from './components/Translate'
 
 // An internal array of objects that simulates external data
 const items = [
@@ -39,11 +40,18 @@ const options = [
 // until routing is wired up.
 function ShowItems(props) {
   const showComponents = props.showComponents
+  const [selected, setSelected] = useState(options[0]);
   if (showComponents) {
     return (
       <div>
         <Accordion items={items} />
         <Search />
+        <Dropdown
+          label="Select a Color"
+          selected={selected}
+          onSelectedChange={setSelected}
+          options={options}
+        />
       </div>
     )
   }
@@ -52,21 +60,12 @@ function ShowItems(props) {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
-  const [selected, setSelected] = useState(options[0]);
-  const [showDropdown, setShowDropdown] = useState(true)
+
 
   return (
     <div>
-      <button onClick={() => setShowDropdown(!showDropdown)}>
-        Toggle Dropdown
-      </button>
-      {showDropdown ?
-        <Dropdown
-          selected={selected}
-          onSelectedChange={setSelected}
-          options={options}
-        /> : null }
-    <ShowItems showComponents={false} />
+      <Translate />
+      <ShowItems showComponents={false} />
     </div>
   );
 };

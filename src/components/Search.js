@@ -5,7 +5,7 @@ import axios from 'axios'
 const Search = () => {
   // Initialze state data
   const [term, setTerm] = useState('programming')
-  const [debouncedTerm, setDeboundedTerm] = useState(term)
+  const [debouncedTerm, setDebouncedTerm] = useState(term)
   const [results, setResults] = useState([])
 
   //* Lifecycle hook 'useEffect'
@@ -14,7 +14,7 @@ const Search = () => {
   // This will prevent unnecessary multiple/double api calls.
   useEffect(() => {
     const timerId= setTimeout(() => {
-      setDeboundedTerm(term)
+      setDebouncedTerm(term)
     }, 1000)
 
     // The 'return' is the "CLEANUP" portion of this lifecycle hook where we cancel
