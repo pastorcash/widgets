@@ -3,6 +3,8 @@ import Accordion from './components/Accordion'
 import Search from './components/Search'
 import Dropdown from './components/Dropdown'
 import Translate from './components/Translate'
+import Route from './components/Route'
+import Header from './components/Header'
 
 // An internal array of objects that simulates external data
 const items = [
@@ -36,36 +38,31 @@ const options = [
   },
 ]
 
-// temp function to not show prev developed components
-// until routing is wired up.
-function ShowItems(props) {
-  const showComponents = props.showComponents
+// eslint-disable-next-line import/no-anonymous-default-export
+export default () => {
+
   const [selected, setSelected] = useState(options[0]);
-  if (showComponents) {
-    return (
-      <div>
+  return (
+    <div>
+      <Header />
+      <Route path="/">
         <Accordion items={items} />
+      </Route>
+      <Route path="/list">
         <Search />
+      </Route>
+      <Route path="/dropdown">
         <Dropdown
           label="Select a Color"
           selected={selected}
           onSelectedChange={setSelected}
           options={options}
         />
-      </div>
-    )
-  }
-  return <div></div>
-}
+      </Route>
+      <Route path="/translate">
+        <Translate />
+      </Route>
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default () => {
-
-
-  return (
-    <div>
-      <Translate />
-      <ShowItems showComponents={false} />
     </div>
   );
 };

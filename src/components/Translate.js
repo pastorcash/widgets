@@ -13,8 +13,24 @@ const options = [
     value: 'ar'
   },
   {
+    label: 'German',
+    value: 'de'
+  },
+  {
+    label: 'Greek',
+    value: 'el'
+  },
+  {
+    label: 'Hebrew',
+    value: 'he'
+  },
+  {
     label: 'Hindi',
     value: 'hi'
+  },
+  {
+    label: 'Spanish',
+    value: 'es'
   }
 ]
 

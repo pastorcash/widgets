@@ -12,8 +12,11 @@ The 'widgets' showcase the following:
               - delayed API request
     3) Dropdown box: useState, useEffect, useRef - reusable component
     4) Translate: useState, useEffect - nested components - delayed API request - Google Translate API
-    5) Basic Routing:
+    5) Basic Routing: useState, useEffect - Simple menu - prevent full page reload - do SPA load - cmd/ctrl click new window
 
+## Did NOT use React Router
+Do to the number of frequently breaking changes,
+Choose not to implement the use of this popular module.
 ## Translate API Note
 This widget will only work if the app is running on:
 
